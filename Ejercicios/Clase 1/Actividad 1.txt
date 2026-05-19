@@ -1,0 +1,14 @@
+Análisis de Casos (5 minutos) - Actividad 1
+
+Pregunta 1: ¿Es correcto lo que dijo el Rector? ¿Por qué la distinción del director de TI es técnicamente importante?
+Es parcialmente correcto. Internet y WWW no son sinónimos, internet es una infraestructura de red global mientras que WWW es un servicio que corre sobre el internet
+Es importante decidir cuál usar porque WWW implica que posee acceso público.
+
+Pregunta 2: Si usan HTTP sobre Internet pero solo para usuarios internos, ¿están usando Internet, la WWW, o ambos?
+Usa internet como infraestructura de transporte, el WWW emplean HTTP y navegador web
+Sin embarga como tiene acceso restringido crea Intranet que es una WWW privada sobre infraestructra de Internet
+
+Pregunta 3: ¿W3C o IETF define los estándares más relevantes para este sistema de notas?
+Ambos pero con roles diferentes
+IETF - transmisión segura de datos - este es el más critico porque ocupa comunicación segura para proteger datos
+W3C - la interfaz web del sistema
