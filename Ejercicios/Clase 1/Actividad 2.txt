@@ -1,0 +1,30 @@
+Actividad 2 - Toma de Decisión Técnica
+
+Pregunta 1: Topología para cada necesidad
+
+(A) Sitio de información pública con trámites - Internet (WWW pública):
+Cualquier vecino del cantón debe poder acceder sin restricciones desde cualquier dispositivo. La información es pública por naturaleza.
+
+(B) Sistema interno de gestión de planillas (RRHH) - Intranet:
+Contiene datos sensibles de empleados por lo que solo persinal autorizado debe tener acceso aestos
+
+(C) Portal de permisos para empresas constructoras - Extranet:
+Acceso restringido a un grupo externo específico (constructoras del cantón), no al público general ni solo a empleados internos. Requiere autenticación y control de acceso.
+
+Pregunta 2: ¿Cuál requiere más inversión en seguridad?
+El sistema B, seguido muy de cerca por el C. Los de recursos humanos manejan datos sensibles como salarios, información laboral, etc.
+Que estos datos se filtren puede significar regulaciones legales por las leyes de protección de datos
+
+Requiere: autenticación robusta, cifrado, auditoría de accesos, backups seguros y control de privilegios
+
+Orden prioridad: B - C - A
+
+Pregunta 3: ¿Un mismo servidor físico puede alojar los tres sistemas de forma segura?
+
+Sí, es técnicamente posible. La clave está en la segmentación lógica:
+
+Virtualización: Cada sistema corre en un entorno diferente dentro del mismo hardware físico
+VLANs y firewalls internos: Se separa el tráfico de red de cada sistema para que no se vean entre sí
+Zonas DMZ: El sistema público (A) va en una DMZ expuesta; el sistema interno (B) en una red privada totalmente aislada; el sistema de empresas (C) en una zona intermedia controlada
+
+Conceptualmente es como tener tres edificios separados dentro del mismo terreno, con muros, puertas y guardias distintos para cada uno.
