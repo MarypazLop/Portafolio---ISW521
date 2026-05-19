@@ -1,0 +1,31 @@
+Actividad 3
+
+Parte A: Análisis de la URL
+
+https://api.github.com:443/repos/bryancs/isw521/issues?state=open&labels=semana1#comentarios
+
+1. Esquema (protocolo)            https
+2. Subdominio                     api
+3. Dominio                        github.com
+4. Puerto                         443
+5. Path/Ruta                      /repos/bryancs/isw521/issues
+6. Parámetro 1 (query string)     state=open
+7. Parámetro 2 (query string)     labels=semana1
+8. Fragmento (ancla)              #comentarios
+
+Total: 8 componentes identificables.
+
+Parte B: Clean URLs para el sistema UTN
+
+1. Página del curso ISW-521, cuatrimestre 2026-II, sede San Carlos:
+
+https://campus.utn.ac.cr/cursos/isw-521/2026-ii/san-carlos
+
+2. Perfil del estudiante con carné 2022-0001:
+
+https://campus.utn.ac.cr/estudiantes/2022-0001
+
+3. Lista de materiales de la semana 3 del curso ISW-521:
+
+https://campus.utn.ac.cr/cursos/isw-521/semana/3/materiales
+
