@@ -1,0 +1,44 @@
+Pregunta 1: TLD, SLD y Subdominio de cada URL
+
+URL	TLD	SLD	Subdominio	Tipo de TLD
+https://campus.utn.ac.cr	.cr	utn	campus (second-level: .ac)	ccTLD(Costa Rica)
+https://www.netflix.com	.com	netflix	www	gTLD (genérico)
+https://api.github.io	.io	github	api	ccTLD (Territorio Británico del Océano Índico, pero usado como gTLD de facto)
+https://app.maravilla.co.cr	.cr	maravilla	app (second-level: .co)	ccTLD(Costa Rica)
+
+
+Pregunta 2: ¿Quién administra .cr y .com? ¿Se necesita ICANN para un subdominio?
+
+.cr - lo administra NIC Costa Rica (adscrito a la UCR), bajo delegación de ICANN
+.com - lo administra Verisign, bajo contrato con ICANN
+
+¿Necesitás ICANN para un subdominio? 
+No. Los subdominios (campus., app., api.) los crea libremente el propietario del dominio en su propio servidor DNS, sin pagar ni registrar nada adicional ante nadie.
+
+Pregunta 3: ¿La UTN necesita pagar para crear egresados.utn.ac.cr?
+
+No. La UTN ya es dueña del dominio utn.ac.cr. 
+Crear egresados.utn.ac.cr es simplemente agregar un registro DNS interno (un registro A o CNAME) apuntando al servidor correspondiente. 
+Eso lo hace el administrador de DNS de la UTN sin costo adicional ni trámite externo.
+
+Pregunta 4: Diferencia entre registro A y registro CNAME
+
+Registro A -
+Apunta a una dirección IP directamente
+Ejemplo:
+campus.utn.ac.cr → 190.10.20.5
+
+Uso típico servidor real con IP fija
+
+¿Puede estar en la raíz del dominio? Sí
+
+Registro CNAME - 
+Apunta a otro nombre de dominio (alias)
+Ejemplo:
+www.utn.ac.cr → campus.utn.ac.cr
+Alias o redirección entre dominios
+
+¿Puede estar en la raíz del dominio? No (no puede ser CNAME el dominio raíz)
+
+
+En resumen: el registro A es la "dirección real", el CNAME es un "apodo" que apunta a esa dirección real.
