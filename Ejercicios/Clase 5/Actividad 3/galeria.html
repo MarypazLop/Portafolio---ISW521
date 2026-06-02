@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Galería Multimedia del Curso</title>
+</head>
+<body>
+
+    <header>
+        <h1>Galería de Recursos Multimedia</h1>
+        <p>Recursos de apoyo para el curso en línea.</p>
+    </header>
+
+    <main>
+
+        <section>
+            <h2>Imagen principal del curso</h2>
+
+            <picture>
+                <source srcset="imagen-curso.webp" type="image/webp">
+                <source srcset="imagen-curso.jpg" type="image/jpeg">
+                <img src="imagen-curso.jpg" 
+                     alt="Estudiantes participando en una clase virtual del curso"
+                     title="Imagen principal del curso">
+            </picture>
+        </section>
+
+        <section>
+            <h2>Video de la clase</h2>
+
+            <video controls poster="poster-video.jpg" width="600">
+                <source src="clase.mp4" type="video/mp4">
+                <source src="clase.webm" type="video/webm">
+                Tu navegador no soporta la reproducción de video.
+            </video>
+        </section>
+
+        <section>
+            <h2>Audio del podcast</h2>
+
+            <audio controls loop muted>
+                <source src="podcast.mp3" type="audio/mpeg">
+                <source src="podcast.ogg" type="audio/ogg">
+                Tu navegador no soporta la reproducción de audio.
+            </audio>
+        </section>
+
+        <section>
+            <h2>Ubicación del curso</h2>
+
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=TU_ENLACE_DEL_MAPA"
+                width="600"
+                height="450"
+                title="Mapa de ubicación del curso"
+                loading="lazy"
+                sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Curso en línea - Recursos multimedia</p>
+    </footer>
+
+</body>
+</html>
