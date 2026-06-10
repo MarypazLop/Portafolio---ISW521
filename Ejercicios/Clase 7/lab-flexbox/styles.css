@@ -1,0 +1,463 @@
+
+/* ----- RESET Y BASE ----- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-bg:        #0d1b2a;   /* Azul noche profundo */
+  --color-surface:   #162033;   /* Superficie de tarjetas */
+  --color-border:    #1e3a52;   /* Bordes sutiles */
+  --color-accent:    #00b4d8;   /* Cian agua */
+  --color-accent2:   #0077b6;   /* Azul océano */
+  --color-text:      #caf0f8;   /* Texto principal */
+  --color-muted:     #8ecae6;   /* Texto secundario */
+  --color-warn:      #f4a261;   /* Advertencia */
+  --color-ok:        #52b788;   /* Estado normal */
+  --color-nav:       #0a1628;   /* Barra nav */
+  --font-main:       'Segoe UI', system-ui, sans-serif;
+  --radius:          10px;
+  --shadow:          0 2px 12px rgba(0, 180, 216, 0.08);
+}
+
+html, body {
+  height: 100%;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-main);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+ul {
+  list-style: none;
+}
+
+/* 
+   EJERCICIO 1 — 
+   Concepto: justify-content: space-between + align-items: center
+   El Main Axis (horizontal) distribuye las tres zonas al extremo
+   de cada lado con espacio entre ellas.
+   El Cross Axis (vertical) centra todos los hijos sin importar
+   su altura individual — sin margin: auto hacks.
+  */
+.navbar {
+  display: flex;
+  /* justify-content: space-between reparte el espacio libre entre
+     los tres hijos empujando el primero al inicio y el último al final */
+  justify-content: space-between;
+  /* align-items: center alinea verticalmente al centro del Cross Axis */
+  align-items: center;
+  min-height: 62px;
+  padding: 0 28px;
+  background-color: var(--color-nav);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-logo span {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.02em;
+}
+
+/* Los <li> de la lista de navegación también se convierten en flex items */
+.nav-links {
+  display: flex;
+  /* gap reemplaza los márgenes individuales — más limpio y predecible */
+  gap: 8px;
+}
+
+.nav-links li a {
+  display: block;
+  padding: 6px 14px;
+  border-radius: 6px;
+  color: var(--color-muted);
+  font-size: 0.92rem;
+  transition: background 0.18s, color 0.18s;
+}
+
+.nav-links li a:hover {
+  background-color: var(--color-border);
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.btn-logout {
+  padding: 7px 18px;
+  border: 1.5px solid var(--color-accent);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-accent);
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+
+.btn-logout:hover {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+
+/* 
+   EJERCICIO 3 
+   Concepto: flex-grow / flex-shrink / flex-basis (shorthand: flex)
+   El contenedor reparte el espacio libre según "porciones":
+     Sidebar    flex: 1  → 1/5 del ancho total
+     Main       flex: 3  → 3/5 del ancho total
+     AlertPanel flex: 1  → 1/5 del ancho total
+   Sin width en píxeles fijos. El navegador hace las matemáticas.
+*/
+.dashboard-layout {
+  display: flex;
+  flex-direction: row;
+  /* calc descuenta la altura del navbar para llenar el viewport */
+  min-height: calc(100vh - 62px);
+}
+
+/* Sidebar ocupa 1/5 del espacio disponible */
+.sidebar {
+  flex: 1;
+  /* flex: 1 es shorthand de flex: 1 1 0% — crece, encoge, empieza en 0 */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--color-nav);
+  border-right: 1px solid var(--color-border);
+  padding: 24px 16px;
+  min-width: 160px; /* min-width actúa como piso: el sidebar nunca baja de 160px */
+}
+
+.sidebar-title {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-muted);
+  margin-bottom: 12px;
+}
+
+.sidebar ul {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar ul li {
+  padding: 9px 12px;
+  border-radius: 7px;
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.sidebar ul li:hover,
+.sidebar ul li.active {
+  background-color: var(--color-border);
+  color: var(--color-accent);
+}
+
+.sidebar-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  margin-top: 16px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #aaa;
+}
+
+.status-dot.online {
+  background: var(--color-ok);
+  box-shadow: 0 0 0 3px rgba(82, 183, 136, 0.25);
+}
+
+/* Contenido principal ocupa 3/5 del espacio disponible */
+.main-content {
+  flex: 3;
+  /* flex: 3 → flex: 3 1 0% — crece 3 veces más que Sidebar y AlertPanel */
+  padding: 28px 24px;
+  overflow-y: auto;
+}
+
+.main-header {
+  display: flex;
+  /* align-items: baseline alinea el título y la fecha en la misma línea base */
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.main-header h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.last-update {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+}
+
+/* Panel de alertas ocupa 1/5 del espacio disponible */
+.alert-panel {
+  flex: 1;
+  /* flex: 1 igual que el sidebar — ambos comparten la misma porción */
+  background-color: var(--color-nav);
+  border-left: 1px solid var(--color-border);
+  padding: 24px 16px;
+  min-width: 160px;
+}
+
+.alert-panel h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--color-text);
+}
+
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+}
+
+.alert-icon {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.alert p {
+  color: var(--color-muted);
+  font-size: 0.78rem;
+  margin-top: 2px;
+}
+
+.alert-warn {
+  background-color: rgba(244, 162, 97, 0.1);
+  border: 1px solid rgba(244, 162, 97, 0.3);
+}
+
+.alert-ok {
+  background-color: rgba(82, 183, 136, 0.1);
+  border: 1px solid rgba(82, 183, 136, 0.25);
+}
+
+.alert-info {
+  background-color: rgba(0, 180, 216, 0.08);
+  border: 1px solid rgba(0, 180, 216, 0.2);
+}
+
+.panel-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+}
+
+
+/* 
+   EJERCICIO 2 
+   Concepto: flex-wrap: wrap + gap + flex-basis
+   Los items "envuelven" a la siguiente fila automáticamente.
+   gap: 16px aplica espacio entre filas Y columnas sin margin hacks.
+   flex-basis: calc(33.333% - 16px) permite exactamente 3 por fila.
+
+    sobre align-items vs align-content:
+     align-items: controla el alineamiento DENTRO DE CADA FILA.
+       Con stretch (por defecto) todas las tarjetas de la misma fila
+       tienen la misma altura aunque su contenido sea distinto.
+     align-content: controla el espacio ENTRE LAS FILAS.
+       Solo aplica cuando flex-wrap: wrap está activo y hay >1 fila.
+ */
+.sensor-grid {
+  display: flex;
+  flex-wrap: wrap;
+  /* gap reemplaza margin como técnica de espaciado — no se duplica en bordes */
+  gap: 16px;
+  /* align-items: stretch hace que todas las tarjetas de la fila
+     tengan la misma altura — efecto "columnas de igual tamaño" */
+  align-items: stretch;
+}
+
+.sensor-card {
+  /* calc(33.333% - 16px): ocupa 1/3 del ancho menos el gap proporcional */
+  /* Con gap: 16px entre 3 columnas, cada item pierde ~10-11px de su porción */
+  flex-basis: calc(33.333% - 16px);
+  flex-grow: 1; /* permite que rellene el espacio si hay pocas cards en la última fila */
+  padding: 20px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.sensor-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0, 180, 216, 0.15);
+}
+
+.sensor-card.warning {
+  border-color: rgba(244, 162, 97, 0.4);
+  background-color: rgba(244, 162, 97, 0.04);
+}
+
+.card-icon {
+  font-size: 1.4rem;
+}
+
+.sensor-card h3 {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-muted);
+  line-height: 1.3;
+}
+
+.sensor-value {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  letter-spacing: -0.01em;
+  margin-top: 4px;
+}
+
+.sensor-sub {
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+.sensor-label {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-border);
+}
+
+.progress-bar {
+  height: 6px;
+  background-color: var(--color-border);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-accent2), var(--color-accent));
+  border-radius: 99px;
+}
+
+/* Footer del sitio */
+.site-footer {
+  background-color: var(--color-nav);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  padding: 14px;
+  font-size: 0.78rem;
+  color: var(--color-muted);
+}
+
+
+/* 
+   EJERCICIO 4 — 
+   Concepto: Media Query + flex-direction: column
+   El único cambio clave es pasar el eje de row → column.
+   Las tres columnas se apilan verticalmente en pantallas <768px.
+   Se usa min-height (no height) porque height: 100vh es absoluto
+   y cortaría el contenido si este supera el viewport.
+   min-height: 100vh permite que el contenedor crezca más que eso.
+ */
+@media (max-width: 768px) {
+
+  body {
+    /* Sticky footer pattern: con flex-direction column + min-height 100vh
+       el main-content con flex:1 empuja el footer hasta el fondo */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* El único cambio que transforma el layout:
+     de tres columnas horizontales a una sola columna vertical */
+  .dashboard-layout {
+    flex-direction: column;
+    min-height: auto;
+    flex: 1; /* hereda el sticky-footer pattern del body */
+  }
+
+  /* Sidebar y panel de alertas dejan de crecer/encoger y ocupan fila completa */
+  .sidebar,
+  .alert-panel {
+    flex: none;
+    width: 100%;
+    min-width: unset;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  /* El contenido principal se expande para llenar el espacio restante */
+  .main-content {
+    flex: 1;
+  }
+
+  /* En móvil las tarjetas ocupan toda la fila disponible */
+  .sensor-card {
+    flex-basis: 100%;
+  }
+
+  .navbar {
+    padding: 0 16px;
+  }
+
+  .nav-links {
+    display: none; /* En móvil real se usaría un menú hamburguesa */
+  }
+
+  .main-content {
+    padding: 20px 16px;
+  }
+}
+
+/* En tablet (768px - 1024px) dos columnas de tarjetas */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .sensor-card {
+    flex-basis: calc(48% - 8px);
+  }
+}

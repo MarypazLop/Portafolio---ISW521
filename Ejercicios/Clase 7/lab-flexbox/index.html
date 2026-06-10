@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AcueductosIoT — Dashboard de Monitoreo Hídrico</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- EJERCICIO 1: Barra de Navegación -->
+  <nav class="navbar">
+    <div class="nav-logo">
+      <span>💧 AcueductosIoT</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Sensores</a></li>
+      <li><a href="#">Alertas</a></li>
+      <li><a href="#">Reportes</a></li>
+    </ul>
+    <button class="btn-logout">Cerrar Sesión</button>
+  </nav>
+
+  <!-- EJERCICIO 3: Layout principal de 3 columnas -->
+  <div class="dashboard-layout">
+
+    <!-- Sidebar izquierdo -->
+    <aside class="sidebar">
+      <nav>
+        <p class="sidebar-title">Navegación</p>
+        <ul>
+          <li class="active">📊 Resumen</li>
+          <li>💧 Tanques</li>
+          <li>⚡ Presiones</li>
+          <li>🧪 Calidad</li>
+          <li>⚙️ Configuración</li>
+        </ul>
+      </nav>
+      <div class="sidebar-status">
+        <span class="status-dot online"></span>
+        <span>Sistema en línea</span>
+      </div>
+    </aside>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+      <header class="main-header">
+        <h2>Gráficos de Monitoreo en Tiempo Real</h2>
+        <span class="last-update">Actualizado: hace 2 min</span>
+      </header>
+
+      <!-- EJERCICIO 2: Cuadrícula de sensores con flex-wrap -->
+      <section class="sensor-grid">
+
+        <div class="sensor-card level">
+          <div class="card-icon">💧</div>
+          <h3>Nivel de Tanque Principal</h3>
+          <p class="sensor-value">73%</p>
+          <div class="progress-bar"><div class="progress-fill" style="width: 73%"></div></div>
+          <p class="sensor-label">Sector A — Actualizado hace 2 min</p>
+        </div>
+
+        <div class="sensor-card pressure">
+          <div class="card-icon">⚡</div>
+          <h3>Presión de Red</h3>
+          <p class="sensor-value">42 PSI</p>
+          <p class="sensor-sub">Mínimo requerido: 30 PSI</p>
+          <p class="sensor-label">Calle 2 — Estado normal</p>
+        </div>
+
+        <div class="sensor-card quality">
+          <div class="card-icon">🧪</div>
+          <h3>Calidad del Agua</h3>
+          <p class="sensor-value">0.8 mg/L</p>
+          <p class="sensor-sub">Cloro residual · Rango: 0.3–1.5</p>
+          <p class="sensor-label">✅ En rango normal</p>
+        </div>
+
+        <div class="sensor-card flow">
+          <div class="card-icon">🌊</div>
+          <h3>Caudal de Entrada</h3>
+          <p class="sensor-value">124 L/min</p>
+          <p class="sensor-sub">Promedio última hora: 118 L/min</p>
+          <p class="sensor-label">Naciente Sur — Normal</p>
+        </div>
+
+        <div class="sensor-card temperature">
+          <div class="card-icon">🌡️</div>
+          <h3>Temperatura del Agua</h3>
+          <p class="sensor-value">18.4 °C</p>
+          <p class="sensor-sub">Rango óptimo: 15–25 °C</p>
+          <p class="sensor-label">✅ Temperatura adecuada</p>
+        </div>
+
+        <div class="sensor-card valve warning">
+          <div class="card-icon">🔧</div>
+          <h3>Válvula de Emergencia</h3>
+          <p class="sensor-value">Cerrada</p>
+          <p class="sensor-sub">Última operación: 14:32</p>
+          <p class="sensor-label">⚠️ Revisión programada</p>
+        </div>
+
+      </section>
+    </main>
+
+    <!-- Panel de alertas derecho -->
+    <aside class="alert-panel">
+      <h3>🔔 Alertas Activas</h3>
+      <div class="alert alert-warn">
+        <span class="alert-icon">⚠️</span>
+        <div>
+          <strong>Presión baja</strong>
+          <p>Sector B — 26 PSI</p>
+        </div>
+      </div>
+      <div class="alert alert-ok">
+        <span class="alert-icon">✅</span>
+        <div>
+          <strong>Cloro en rango</strong>
+          <p>Nivel normal</p>
+        </div>
+      </div>
+      <div class="alert alert-info">
+        <span class="alert-icon">ℹ️</span>
+        <div>
+          <strong>Mantenimiento</strong>
+          <p>Válvula — 15:00</p>
+        </div>
+      </div>
+      <div class="alert alert-ok">
+        <span class="alert-icon">✅</span>
+        <div>
+          <strong>Tanque Sector A</strong>
+          <p>Llenado al 73%</p>
+        </div>
+      </div>
+      <div class="panel-footer">
+        <span>4 alertas activas</span>
+        <a href="#">Ver todas →</a>
+      </div>
+    </aside>
+
+  </div><!-- fin .dashboard-layout -->
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>ISW-521 · Programación en Ambiente Web I — Lab 3: Flexbox · UTN © 2025</p>
+  </footer>
+
+</body>
+</html>
