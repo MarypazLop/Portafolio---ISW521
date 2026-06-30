@@ -136,6 +136,7 @@ switch (mes) {
     default:
         console.log("Un mes del año");
 }
+
 /*
 ^ - donde inicia
 $ - donde termina
